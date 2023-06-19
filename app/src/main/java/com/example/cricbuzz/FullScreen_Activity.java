@@ -1,0 +1,45 @@
+package com.example.cricbuzz;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+
+public class FullScreen_Activity extends AppCompatActivity {
+
+
+    ImageView imageView;
+    TextView txt1,txt2,txt3;
+
+    int imgArr[];
+    String name[];
+    String  num[];
+    String born[];
+    int position;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_full_screen);
+        position=getIntent().getIntExtra("pos",0);
+        name=getIntent().getStringArrayExtra("name");
+        num=getIntent().getStringArrayExtra("num");
+        born=getIntent().getStringArrayExtra("born");
+        imgArr=getIntent().getIntArrayExtra("img");
+
+
+
+        imageView=findViewById(R.id.activity_full_img);
+        txt1=findViewById(R.id.activity_full_name);
+        txt2=findViewById(R.id.activity_full_num);
+        txt3=findViewById(R.id.activity_full_born);
+
+        imageView.setImageResource(imgArr[position]);
+        txt1.setText(name[position]);
+        txt2.setText(num[position]);
+        txt3.setText(born[position]);
+
+    }
+}
